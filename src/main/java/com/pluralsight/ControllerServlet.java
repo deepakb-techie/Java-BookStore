@@ -62,6 +62,9 @@ public class ControllerServlet extends HttpServlet {
 				case "/delete":
 					deleteBook(request, response);
 		  break;
+				case "/edit":
+					showEditForm(request, response);
+		  break;
         default:
 				   listBooks(request, response);
            break;
@@ -114,6 +117,14 @@ public class ControllerServlet extends HttpServlet {
 		response.sendRedirect("list");
 	}
 
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Book editedBook = bookDAO.getBook(id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/BookForm.jsp");
+		request.setAttribute("book", editedBook);
+		dispatcher.forward(request, response);
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
