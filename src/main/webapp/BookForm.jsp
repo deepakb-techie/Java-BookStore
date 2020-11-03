@@ -20,18 +20,18 @@
         		Edit Book Form
     		</h2>
     		<input type="hidden" name="id" value="<c:out value="${ book.id }"/>" />
-	</c:if>>
+	</c:if>
 	<c:if test="${ book == null }" > 
 		<form name="book_form" method="post" action="insert" ></form>
 		 <h2>
         	New Book Form
     	 </h2>
-	</c:if>>
+	</c:if>
 
-      <c:if test="${book != null}">
+  	  <p><label>Title:</label>
+  	  <c:if test="${book != null}">
         <input type="hidden" name="id" value="<c:out value="${book.id}"/>" />
       </c:if>
-  	  <p><label>Title:</label>
       <input type="text" name="booktitle" value="<c:out value="${book.title}"/>"/></p>
   	  <p><label>Author:</label>
       <input type="text" name="bookauthor" value="<c:out value="${book.author}"/>"/></p>
